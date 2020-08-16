@@ -3,9 +3,7 @@ from tkinter import *#
 from tkinter import filedialog#
 import tkinter.messagebox ## CLEANUP
 from PIL import Image, ImageTk#
-import os
 import os.path
-import numpy as np
 import cv2 as cv
 import torch
 import torch.nn as nn
@@ -16,7 +14,7 @@ Displays results of applying 3 pre-trained weights (different Datasets) to pre-s
 Dataset 1: 3400 anime and 3400 | real 100 anime 100 real —> 10 epochs, 0.001 learning rate
 Dataset 2: 3400 anime and 3400 | real 100 anime 100 real —> 10 epochs, 0.001 learning rate
 Dataset 3: 1700 anime+1700 anime 2, 1700 real + 1700 real 2 | real 50, real 2 50 anime 50 anime 2 50 —> epochs, 0.001 learning rate
-Model AI_project_cyclegan http://192.168.33.183/user/1003068/notebooks/AI_project_cyclegan%20(2)%20TT.ipynb 
+Model AI_project_cyclegan  
 """
 class ResidualBlock(nn.Module):
     """ The following model directly follows the 

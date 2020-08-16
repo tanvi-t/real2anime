@@ -10,7 +10,7 @@ In this project, we attempt to implement a face2anime GAN using CycleGAN.
 - download pre-trained weights saved as weights1.pth, weights2.pth, weights2.pth
 
 # Usage of GUI
-- run `make GUI` on terminal
+- run `make gui` on terminal
 - click on "Upload Image" to access and upload a local face from ./upload_examples or your own jpg images to the GUI
 - uploading non-images will not show any result
 - click "Anime-ate Image!" to see the anime version of the face
