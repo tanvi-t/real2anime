@@ -117,7 +117,7 @@ class Window(Frame):
         Frame.__init__(self, master)
         self.master = master
         self.pos = []
-        self.master.title("Cartoon")
+        self.master.title("Real2Anime")
         self.pack(fill=BOTH, expand=1)
         upload=Button(root,text="Upload Image",command= self.uploadImage)
         upload.configure(background='#58c38b', foreground='white',font=('calibri',12)) # 'bold' #https://www.colorhexa.com
