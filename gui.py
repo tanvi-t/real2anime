@@ -157,7 +157,12 @@ class Window(Frame):
         eg3.place(relx=0.25,rely=0.76,anchor=CENTER)
 
     def uploadImage(self):
-        if self.filename!='./eg1.jpg' and self.filename!='./eg2.jpg' and self.filename!='./eg3.jpg':
+        try:
+            if self.filename!='./eg1.jpg' and self.filename!='./eg2.jpg' and self.filename!='./eg3.jpg':
+                self.filename = filedialog.askopenfilename(initialdir=os.getcwd()) ####C:/Users/Tanvi/Desktop/AIproject/cartoon-gan/GANTEST.jpg
+                if not self.filename:
+                    return
+        except AttributeError:
             self.filename = filedialog.askopenfilename(initialdir=os.getcwd()) ####C:/Users/Tanvi/Desktop/AIproject/cartoon-gan/GANTEST.jpg
             if not self.filename:
                 return
@@ -178,6 +183,8 @@ class Window(Frame):
            
         else:
             self.canvas.delete(self.image3)
+            self.canvas.delete(self.image4)
+            self.canvas.delete(self.image5)
             w, h = load.size
             width, height = root.winfo_screenmmwidth(), root.winfo_screenheight()
             self.render2 = ImageTk.PhotoImage(load)
@@ -267,19 +274,26 @@ class Window(Frame):
             width, height = root.winfo_screenmmwidth(), root.winfo_screenheight()
             self.render11 = ImageTk.PhotoImage(result1)
             self.image3 = self.canvas.create_image((50,64),anchor=CENTER,image=self.render11)
+            text = Label(self, text="Dataset 1")
+            text.place(x=520,y=130)
+            # w = tk.Label(root, text="Hello Tkinter!",image=self.render11, compound='center') ###
             self.canvas.move(self.image3, 500, 0) 
 
             w, h = result2.size
             width, height = root.winfo_screenmmwidth(), root.winfo_screenheight()
             self.render12 = ImageTk.PhotoImage(result2)
-            self.image3 = self.canvas.create_image((200,64), image=self.render12)
-            self.canvas.move(self.image3, 500, 0)
+            self.image4 = self.canvas.create_image((200,64), image=self.render12)
+            text = Label(self, text="Dataset 2")
+            text.place(x=670,y=130)
+            self.canvas.move(self.image4, 500, 0)
              
             w, h = result3.size ##  THIS PLAYS
             width, height = root.winfo_screenmmwidth(), root.winfo_screenheight()
             self.render13 = ImageTk.PhotoImage(result3)
-            self.image3 = self.canvas.create_image((350,64), anchor=CENTER, image=self.render13)
-            self.canvas.move(self.image3, 500, 0) 
+            self.image5 = self.canvas.create_image((350,64), anchor=CENTER, image=self.render13)
+            text = Label(self, text="Dataset 3")
+            text.place(x=820,y=130)
+            self.canvas.move(self.image5, 500, 0) 
 
 if __name__=='__main__':
     root = tk.Tk()
