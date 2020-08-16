@@ -1,15 +1,19 @@
 # Real2Anime GUI
 In this project, we attempt to implement a face2anime GAN using CycleGAN. 
-![exampleresult.png](https://xxx/result.png "result example")
+![exampleGUI.jpg](https://github.com/tanvi-t/real2anime/blob/master/exampleGUI.jpg "result example")
 
-# Setup and Usage of GUI
+# Setup of GUI
 
-- in terminal, navigate to C:\...\AIproject\cartoon-gan
+- clone the Github repo to your local drive using `git clone https://github.com/tanvi-t/real2anime` (or you can do it through the Github Desktop app)
+- in terminal, navigate to `cd C:\...\cartoon-gan`
 - run `pip install -r requirements.txt`
-- download pre-trained weights Real2Anime.pth from https://github.com/xxx/releases to the same path
-- run `make GUI`
-- click on Upload Image to access and upload a local face from ./celebAs_test to the GUI
-- click Cartoon to see the anime version of the face
+- download pre-trained weights saved as weights1.pth, weights2.pth, weights2.pth
+
+# Usage of GUI
+- run `make GUI` on terminal
+- click on "Upload Image" to access and upload a local face from ./upload_examples or your own jpg images to the GUI
+- uploading non-images will not show any result
+- click "Cartoonise Image!" to see the anime version of the face
 
 # Acknowledgements
 This project's was implemented with the listed frameworks and modules, and we fully acknowledge the support they have provided:
