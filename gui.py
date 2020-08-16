@@ -123,7 +123,7 @@ class Window(Frame):
         upload=Button(root,text="Upload Image",command= self.uploadImage)
         upload.configure(background='#58c38b', foreground='white',font=('calibri',12)) # 'bold' #https://www.colorhexa.com
         upload.place(relx=0.25,rely=0.5,anchor=CENTER)
-        cartoon=Button(root,text="Cartoonise Image!",command= self.cartoon)
+        cartoon=Button(root,text="Anime-ate Image!",command= self.cartoon)
         cartoon.configure(background='#58c38b', foreground='white',font=('calibri',12))
         cartoon.place(relx=0.75,rely=0.5,anchor=CENTER)
         self.canvas = tk.Canvas(self)
@@ -248,7 +248,8 @@ class Window(Frame):
         with Image.open(self.filename) as img:
             """
             Input image is given as a batch. 
-            3 different results for 3 different R2A weights
+            3 different results for 3 different R2A weights. 
+            The results are also saved locally for easy access. 
             """            
             pseudo_batched_img = transform_real(img)
             pseudo_batched_img = pseudo_batched_img[None]
