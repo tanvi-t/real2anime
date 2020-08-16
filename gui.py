@@ -12,6 +12,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import transforms
 """
+Displays results of applying 3 pre-trained weights (different Datasets) to pre-set example / user-input images:
 Dataset 1: 3400 anime and 3400 | real 100 anime 100 real —> 10 epochs, 0.001 learning rate
 Dataset 2: 3400 anime and 3400 | real 100 anime 100 real —> 10 epochs, 0.001 learning rate
 Dataset 3: 1700 anime+1700 anime 2, 1700 real + 1700 real 2 | real 50, real 2 50 anime 50 anime 2 50 —> epochs, 0.001 learning rate
