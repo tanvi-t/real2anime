@@ -115,7 +115,7 @@ class Window(Frame):
         upload=Button(root,text="Upload Image",command= self.uploadImage)
         upload.configure(background='#58c38b', foreground='white',font=('calibri',12)) # 'bold' #https://www.colorhexa.com
         upload.place(relx=0.25,rely=0.5,anchor=CENTER)
-        cartoon=Button(root,text="Cartoonise Image",command= self.cartoon)
+        cartoon=Button(root,text="Cartoonise Image!",command= self.cartoon)
         cartoon.configure(background='#58c38b', foreground='white',font=('calibri',12))
         cartoon.place(relx=0.75,rely=0.5,anchor=CENTER)
         self.canvas = tk.Canvas(self)
@@ -124,7 +124,7 @@ class Window(Frame):
         self.image2 = None
         label1=Label(self,image=img)
         label1.image=img
-        label1.place(relx=0.5, rely=0.7, anchor=CENTER) #### LOGO placement so it scales
+        label1.place(relx=0.5, rely=0.8, anchor=CENTER) #### LOGO placement so it scales
 
         def example1(): # here bc is setup
             # print("ratty")
@@ -221,17 +221,16 @@ class Window(Frame):
         im_size = 128 ### 
         transform_real = transforms.Compose([
                 transforms.Resize((im_size,im_size),Image.NEAREST),
-                #transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
                 transforms.ToTensor(),
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
                 ])
-
-        # transform_anime = transforms.Compose([
-        #         transforms.Resize((im_size,im_size),Image.NEAREST),
-        #         #transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
-        #         transforms.ToTensor(),
-        #         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-        #         ])
+        transform_real_64 = transforms.Compose([
+            transforms.CenterCrop(160),
+            transforms.Resize((64,64),Image.NEAREST),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+            ])
+ 
 
         with Image.open(self.filename) as img:
             # The input is needed as a batch, I got the solution from here:
@@ -244,9 +243,10 @@ class Window(Frame):
             result1 = result1.resize((im_size,im_size))
             result1.save('transformed1.'+img.format)
 
-            result2 = G2(pseudo_batched_img) # is the real to anime weights 
+            pseudo_batched_img_64 = transform_real_64(img)
+            result2 = G2(pseudo_batched_img_64) # is the real to anime weights 
             result2 = transforms.ToPILImage()(result2[0]).convert('RGB')
-            result2 = result2.resize((im_size,im_size))
+            # result2 = result2.resize((im_size,im_size))
             result2.save('transformed2.'+img.format)
             
             result3 = G3(pseudo_batched_img) # is the real to anime weights 
